@@ -916,6 +916,17 @@ aiger_default_put (char ch, FILE * file)
 }
 
 static int
+aiger_string_get (char ** ch)
+{
+  unsigned char res;
+  if (**ch == '\0')
+    return EOF;
+  res = **ch;
+  (*ch)++;
+  return res;
+}
+
+static int
 aiger_string_put (char ch, aiger_buffer * buffer)
 {
   unsigned char res;
@@ -2568,6 +2579,13 @@ aiger_read_generic (aiger * public, void *state, aiger_get get)
     return error;
 
   return aiger_check (public);
+}
+
+const char *
+aiger_read_from_string (aiger * public, const char * str) {
+  assert (!aiger_error (public));
+  char * buffer = (char *)str;
+  return aiger_read_generic (public, &buffer, (aiger_get) aiger_string_get);
 }
 
 const char *
