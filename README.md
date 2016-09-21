@@ -7,5 +7,5 @@ A Swift Package Manager module containing the [AIGER](http://fmv.jku.at/aiger/) 
 ## Swift Package Manager
 
 ```swift
-.Package(url: "https://github.com/ltentrup/CAiger.git", majorVersion: 1)
+.Package(url: "https://github.com/ltentrup/CAiger.git", majorVersion: 0, minorVersion: 1)
 ```
